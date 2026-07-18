@@ -1,7 +1,7 @@
 declare-option -hidden str open_selection
 
-define-command -override -hidden open-refresh-buffer %{
   evaluate-commands -draft %{
+define-command -hidden open-refresh-buffer %{
     execute-keys %{x"oy}
     execute-keys %{%|ls -p "${kak_bufname}"<ret>}
     try %{
@@ -14,7 +14,7 @@ define-command -override -hidden open-refresh-buffer %{
   }
 }
 
-define-command -override -hidden open-current-line %{
+define-command -hidden open-current-line %{
   evaluate-commands -draft %{
     execute-keys %{giGL}
     set-option window open_selection %val{selection}
@@ -22,7 +22,7 @@ define-command -override -hidden open-current-line %{
   open "%val{bufname}%opt{open_selection}"
 }
 
-define-command -override -params 1 open %{
+define-command -params 1 open %{
   try %{edit %arg{1}} catch %{
     edit -scratch %sh{
       name="${1%/}"
