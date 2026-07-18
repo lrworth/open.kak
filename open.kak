@@ -1,7 +1,7 @@
 declare-option -hidden str open_selection
 
-  evaluate-commands -draft %{
 define-command -hidden open-refresh-buffer %{
+  evaluate-commands -save-regs o -draft %{
     execute-keys %{x"oy}
     execute-keys %{%|ls -p "${kak_bufname}"<ret>}
     try %{
